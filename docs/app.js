@@ -45,6 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 navBar.classList.remove('active');
             });
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navBar.classList.contains('active') && !navBar.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navBar.classList.remove('active');
+            }
+        });
     }
 
     // ─── Dynamic GitHub Release Version Fetcher ──────────────────────────

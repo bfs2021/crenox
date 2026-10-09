@@ -986,6 +986,12 @@ Maintained by **CrenoxHQ** — [https://github.com/crenoxhq](https://github.com/
 
 ---
 
+## Enterprise Edition (Crenox Pro)
+
+Crenox Pro &mdash; an on-premises, air-gapped security platform providing centralized policy distribution, tamper-evident audit logging, and engineering fleet management &mdash; is currently under active development. Official release announcements and specifications will be published upon launch.
+
+---
+
 ## License
 
 GNU Affero General Public License v3.0.
