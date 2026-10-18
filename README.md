@@ -115,6 +115,7 @@ asciinema play https://crenoxhq.github.io/crenox/demo.cast
 - [In the Wild (Live Archive)](https://crenoxhq.github.io/crenox/wild.html)
 - [Running Tests](#running-tests)
 - [Contributing](#contributing)
+- [Enterprise Edition (Crenox Pro)](#enterprise-edition-crenox-pro)
 - [License](#license)
 
 ---
@@ -988,7 +989,17 @@ Maintained by **CrenoxHQ** — [https://github.com/crenoxhq](https://github.com/
 
 ## Enterprise Edition (Crenox Pro)
 
-Crenox Pro &mdash; an on-premises, air-gapped security platform providing centralized policy distribution, tamper-evident audit logging, and engineering fleet management &mdash; is currently under active development. Official release announcements and specifications will be published upon launch.
+Crenox Pro provides centralized policy enforcement, cryptographic audit ledgers, and fleet-wide pre-commit secret interception across developer workstations and engineering teams.
+
+### Teaser Demonstration
+
+Watch how Crenox intercepts sensitive credentials in workstation memory before commits leave local developer machines:
+
+https://crenoxhq.github.io/crenox/crenox-demo.mp4
+
+> **[Watch Teaser Video (MP4)](https://crenoxhq.github.io/crenox/crenox-demo.mp4)** &bull; **[Interactive Documentation & Showcase](https://crenoxhq.github.io/crenox/)**
+
+*Crenox Pro is currently in private technical preview. Enterprise fleet specifications and licensing will be published upon formal rollout.*
 
 ---
 

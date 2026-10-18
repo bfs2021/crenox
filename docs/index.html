@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crenox (كرينوكس) — Ultra-Fast Git Secret Scanner & Pre-Commit Hook | Gitleaks Alternative</title>
+    <title>Crenox — Pre-Commit Secret Scanner & In-Memory Interception</title>
     
     <!-- Meta Descriptions for SEO -->
-    <meta name="description" content="Crenox is a zero-dependency, ultra-fast Git secret scanner and pre-commit hook written in Go. Detect leaked API keys, tokens, and credentials in under 20ms with 130+ signatures and GitLab SAST / GitHub SARIF reporting.">
-    <meta name="keywords" content="secret scanner, git secret scanner, secret detection tool, gitleaks alternative, git-secrets alternative, detect api keys, detect leaked passwords, pre-commit secret scanner, gitlab secret detection sast, sarif secret scanner, go secret scanner, devsecops secret scanner, فاحص أسرار, فحص الأسرار البرمجية">
+    <meta name="description" content="Crenox is an ultra-fast, zero-dependency Git pre-commit secret detector written in Go. Inspect staged buffers locally to block credential leaks before commit finalization.">
+    <meta name="keywords" content="Crenox, Crenox Pro, secret scanner, git secret scanner, secret detection tool, pre-commit hook, in-memory secret detection, go secret scanner, devsecops secret scanner, gitlab secret detection sast, sarif secret scanner">
     <meta name="author" content="CrenoxHQ">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="google-site-verification" content="googledc7329401f946fab">
@@ -23,18 +23,18 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://crenoxhq.github.io/crenox/">
-    <meta property="og:title" content="Crenox — Ultra-Fast Git Secret Scanner & Pre-Commit Hook (Gitleaks Alternative)">
-    <meta property="og:description" content="A zero-dependency, sub-20ms Git pre-commit secret detector written in Go. Prevent credential leaks at the developer workstation.">
+    <meta property="og:title" content="Crenox — Pre-Commit Secret Scanner & In-Memory Interception">
+    <meta property="og:description" content="A zero-dependency Git pre-commit secret detector written in Go. Block credential leaks in workstation memory before commit finalization.">
     <meta property="og:image" content="https://crenoxhq.github.io/crenox/social-preview.png">
-    <meta property="og:site_name" content="Crenox Secret Scanner">
+    <meta property="og:site_name" content="Crenox">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ar_AR">
  
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://crenoxhq.github.io/crenox/">
-    <meta name="twitter:title" content="Crenox — Ultra-Fast Git Secret Scanner & Pre-Commit Hook">
-    <meta name="twitter:description" content="A zero-dependency Git pre-commit secret detector written in Go. Protect credentials locally in <20ms.">
+    <meta name="twitter:title" content="Crenox — Pre-Commit Secret Scanner">
+    <meta name="twitter:description" content="A zero-dependency Git pre-commit secret detector written in Go. Block credential leaks in workstation memory before commit finalization.">
     <meta name="twitter:image" content="https://crenoxhq.github.io/crenox/social-preview.png">
 
     <!-- Structured Data (JSON-LD Schema) for Google Search Rich Snippets -->
@@ -42,9 +42,9 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Crenox",
-      "alternateName": ["Crenox Secret Scanner", "كرينوكس", "فاحص أسرار كرينوكس"],
-      "description": "A high-performance zero-dependency Git pre-commit secret scanner and credentials detector written in Go.",
+      "name": "Crenox Pro",
+      "alternateName": ["Crenox Pro", "Crenox", "كرينوكس برو"],
+      "description": "An on-premises Git pre-commit security platform and credential leak interception engine written in Go.",
       "operatingSystem": "Linux, macOS, Windows, Android (Termux)",
       "applicationCategory": "SecurityApplication",
       "softwareVersion": "2.1.10",
@@ -125,6 +125,7 @@
             </a>
             
             <div class="nav-controls">
+                <a href="pro.html" class="nav-enterprise-link nav-enterprise-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Crenox Pro (Soon)</a>
                 <a href="index-ar.html" class="lang-switch-btn" aria-label="Switch to Arabic" title="العربية">
                     <svg class="lang-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -140,6 +141,7 @@
             </div>
 
             <div class="nav-links" id="navLinks">
+                <a href="pro.html" class="nav-link nav-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Enterprise Pro (Soon)</a>
                 <a href="#philosophy" class="nav-link">Philosophy</a>
                 <a href="#pipeline" class="nav-link">Pipeline</a>
                 <a href="#benchmarks" class="nav-link">Performance</a>
@@ -163,36 +165,56 @@
         <!-- Hero Section -->
         <article class="hero-section">
             <div class="eyebrow">
-                Engineering Release Notes
+                Engineered in Go &bull; Zero External Dependencies &bull; Sub-20ms
             </div>
-            <h1 class="hero-title">Git Secret Scanner: Preventing credential leaks locally.</h1>
-            <p class="text-lead">Statically compiled in Go with zero external runtime dependencies, Crenox evaluates staged files locally to prevent credential leakage before they leave the developer workstation.</p>
+            <h1 class="hero-title">Prevent credential leaks before they escape.</h1>
+            <p class="text-lead">Statically compiled in Go with zero external runtime dependencies, Crenox inspects staged Git buffers in workstation memory to stop secret leaks before commit finalization.</p>
             
             <p class="text-muted" style="font-size: 0.85rem; margin-top: -1rem;">Published by <strong>CrenoxHQ</strong> on July 3, 2026</p>
 
             <div class="hero-actions">
-                <a href="#installation" class="btn btn-primary">Deploy Crenox</a>
+                <a href="#installation" class="btn btn-primary">Deploy Crenox Free</a>
+                <a href="pro.html" class="btn btn-secondary btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">
+                    Crenox Pro (Coming Soon)
+                </a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="btn btn-secondary">
                     GitHub Codebase
                     <span class="btn-icon">↗</span>
                 </a>
             </div>
-            
-            <div style="margin-top: 2rem; display: flex; align-items: center;">
-                <a href="https://www.producthunt.com/products/crenox-leak-secret-scanner?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-crenox-secret-scanner" target="_blank" rel="noopener noreferrer"><img alt="Crenox Secret Scanner - Context-aware Git secret scanner in Go | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1196224&amp;theme=neutral&amp;t=1784131078630" style="width: 250px; height: 54px; border-radius: 6px;"></a>
+
+
+            <!-- Video Demonstration -->
+            <div class="hero-video-frame">
+                <video class="hero-video-player" autoplay loop muted playsinline controls preload="metadata" poster="logo.png">
+                    <source src="crenox-demo.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video playback.
+                </video>
             </div>
 
-            <!-- Institutional Enterprise Callout -->
-            <div class="pro-callout-card">
-                <div class="pro-callout-content" style="max-width: 100%;">
-                    <div class="pro-callout-badge">
-                        <span class="pro-badge-dot"></span>
-                        Under Active Development &bull; Enterprise Fleet Governance
+            <!-- Edition Architecture Bridge -->
+            <div class="tier-bridge-card">
+                <div class="tier-bridge-side">
+                    <div>
+                        <div class="tier-bridge-tag">Open Source CLI</div>
+                        <h3 class="tier-bridge-heading">Crenox Community</h3>
+                        <p class="tier-bridge-desc">
+                            Lightweight Git pre-commit scanner for individual developers. Intercepts secrets locally in workstation memory before they leave your machine. Fast, private, and free forever.
+                        </p>
                     </div>
-                    <h2 class="pro-callout-title">Crenox Pro &mdash; Enterprise Fleet Controller</h2>
-                    <p class="pro-callout-desc">
-                        We are currently engineering Crenox Pro: a sovereign, on-premises, air-gapped controller for centralized policy distribution, immutable tamper-evident audit ledgers, and developer fleet compliance. Official release and specifications will be announced soon.
-                    </p>
+                    <a href="#installation" class="tier-bridge-action">Deploy CLI Locally &darr;</a>
+                </div>
+                <div class="tier-bridge-side">
+                    <div>
+                        <div class="tier-bridge-tag pro">Enterprise Fleet Governance</div>
+                        <h3 class="tier-bridge-heading">Crenox Pro</h3>
+                        <p class="tier-bridge-desc">
+                            Centralized policy management, automated compliance audit trails, and fleet-wide enforcement for engineering teams.
+                        </p>
+                    </div>
+                    <a href="pro.html" class="tier-bridge-btn-pro tier-bridge-btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">
+                        Enterprise Fleet (Coming Soon)
+                    </a>
                 </div>
             </div>
         </article>
@@ -528,6 +550,7 @@ allowlist_patterns:
                 </a>
             </div>
             <div class="footer-links">
+                <a href="pro.html" class="footer-link footer-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Enterprise Pro (Soon)</a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="footer-link">GitHub Repository</a>
                 <a href="https://github.com/crenoxhq/crenox/blob/main/CHANGELOG.md" target="_blank" class="footer-link">Changelog</a>
             </div>

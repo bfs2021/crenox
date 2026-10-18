@@ -950,3 +950,185 @@ html[dir="rtl"] .pro-callout-card {
         white-space: nowrap;
     }
 }
+
+/* --- High-End Cinematic Video Showcase --- */
+.hero-video-frame {
+    margin: 2.75rem auto 3.25rem auto;
+    position: relative;
+    max-width: 900px;
+    background: #000000;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.18), 0 10px 24px -8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.hero-video-player {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 520px;
+    background: #000000;
+    outline: none;
+    object-fit: cover;
+}
+
+/* --- Discreet Enterprise Pro Nav Link --- */
+.nav-enterprise-link {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    background: #F1F5F9;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    transition: var(--transition-clean);
+    white-space: nowrap;
+}
+
+.nav-enterprise-link:hover {
+    background: #E2E8F0;
+    border-color: #CBD5E1;
+}
+
+/* --- Edition Architecture Bridge Card --- */
+.tier-bridge-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin: 3rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .tier-bridge-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tier-bridge-side {
+    padding: 2.25rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tier-bridge-side:first-child {
+    background: #FAFAFA;
+    border-right: 1px solid var(--color-border);
+}
+
+html[dir="rtl"] .tier-bridge-side:first-child {
+    border-right: none;
+    border-left: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+    .tier-bridge-side:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+    html[dir="rtl"] .tier-bridge-side:first-child {
+        border-left: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+.tier-bridge-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.tier-bridge-tag.pro {
+    color: var(--color-text-primary);
+}
+
+.tier-bridge-heading {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.55rem;
+    letter-spacing: -0.01em;
+}
+
+.tier-bridge-desc {
+    font-size: 0.92rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    flex-grow: 1;
+}
+
+.tier-bridge-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-primary);
+}
+
+.tier-bridge-action:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.tier-bridge-btn-pro {
+    background: #111111;
+    color: #FFFFFF !important;
+    padding: 0.6rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    align-self: flex-start;
+    transition: var(--transition-clean);
+}
+
+.tier-bridge-btn-pro:hover {
+    background: #333333;
+}
+
+/* --- Disabled Pro States --- */
+.btn-disabled,
+.tier-bridge-btn-disabled,
+.nav-enterprise-disabled,
+.nav-link-disabled,
+.footer-link-disabled {
+    opacity: 0.55 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.tier-bridge-btn-pro.tier-bridge-btn-disabled {
+    background: #4B5563 !important;
+    color: #E5E7EB !important;
+}
+
+.nav-enterprise-link.nav-enterprise-disabled {
+    background: #F3F4F6 !important;
+    color: #9CA3AF !important;
+    border-color: #E5E7EB !important;
+}
+
+
+
+
+

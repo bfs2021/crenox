@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كرينوكس (Crenox) — أفضل فاحص أسرار وكشف تسريب المفاتيح في Git | بديل Gitleaks</title>
+    <title>كرينوكس — فحص أسرار Git واعتراض التسريب في الذاكرة</title>
     
     <!-- Meta Descriptions for SEO -->
-    <meta name="description" content="كرينوكس هو فاحص أسرار سريع ومجاني ومفتوح المصدر بلغة Go. يكشف تسريب مفاتيح API وكلمات المرور والرموز السرية في مستودعات Git وخطافات Pre-commit في أقل من 20 مللي ثانية بدون استهلاك موارد. بديل Gitleaks فائق السرعة.">
-    <meta name="keywords" content="فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فاحص مفاتيح API, بديل gitleaks, فحص git secrets, كشف كلمات المرور, فحص الثغرات, حماية الشيفرة البرمجية, secret scanner, git secret scanner, credentials scanner, pre-commit hook, gitleaks alternative, git-secrets alternative, SAST secret detection">
-    <meta name="author" content="crenoxhq">
+    <meta name="description" content="أداة كرينوكس (Crenox) لفحص أسرار Git محلياً بلغة Go بدون اعتماديات. فحص التعديلات في ذاكرة محطة العمل لمنع تسريب المفاتيح وبيانات الاعتماد قبل إتمام الالتزام.">
+    <meta name="keywords" content="كرينوكس, Crenox, Crenox Pro, فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فاحص مفاتيح API, بديل gitleaks, فحص git secrets, كشف كلمات المرور, حماية الشيفرة البرمجية, pre-commit hook">
+    <meta name="author" content="CrenoxHQ">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="google-site-verification" content="googledc7329401f946fab">
     
@@ -23,15 +23,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://crenoxhq.github.io/crenox/index-ar.html">
-    <meta property="og:title" content="كرينوكس (Crenox) — فاحص أسرار Git وكشف تسريب المفاتيح في Pre-Commit">
-    <meta property="og:description" content="فاحص أسرار ومفاتيح برمجية فائق السرعة بلغة Go. يفحص مستودعات Git ويكشف أسرار ومفاتيح API في أقل من 20 مللي ثانية مع دعم كامل لتقارير GitLab SAST و SARIF.">
+    <meta property="og:title" content="كرينوكس — فحص أسرار Git واعتراض التسريب في الذاكرة">
+    <meta property="og:description" content="أداة فحص أسرار خفيفة بلغة Go وبدون أي متطلبات تشغيل. تحمي مستودعات Git من تسريب المفاتيح محلياً.">
     <meta property="og:image" content="https://crenoxhq.github.io/crenox/social-card.png">
+    <meta property="og:site_name" content="كرينوكس">
     <meta property="og:locale" content="ar_AR">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://crenoxhq.github.io/crenox/index-ar.html">
-    <meta name="twitter:title" content="كرينوكس (Crenox) — فاحص أسرار Git فائق السرعة">
+    <meta name="twitter:title" content="كرينوكس — فحص أسرار Git محلياً">
     <meta name="twitter:description" content="أداة فحص أسرار خفيفة بلغة Go وبدون أي متطلبات تشغيل. تحمي مستودعات Git من تسريب المفاتيح محلياً.">
     <meta name="twitter:image" content="https://crenoxhq.github.io/crenox/social-card.png">
 
@@ -40,9 +41,9 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Crenox",
-      "alternateName": ["Crenox Secret Scanner", "كرينوكس", "فاحص أسرار كرينوكس"],
-      "description": "فاحص أسرار وخطاف pre-commit أمني فائق السرعة بلغة Go لكشف تسريب المفاتيح وكلمات المرور والرموز السرية في Git محلياً.",
+      "name": "Crenox Pro",
+      "alternateName": ["Crenox Pro", "كرينوكس برو", "Crenox"],
+      "description": "منصة كرينوكس برو لفحص واعتراض أسرار Git محلياً بلغة Go بدون أي متطلبات تشغيل.",
       "operatingSystem": "Linux, macOS, Windows, Android (Termux)",
       "applicationCategory": "SecurityApplication",
       "softwareVersion": "2.1.10",
@@ -123,6 +124,7 @@
             </a>
             
             <div class="nav-controls">
+                <a href="pro.html" class="nav-enterprise-link nav-enterprise-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">نسخة Pro (قريباً)</a>
                 <a href="index.html" class="lang-switch-btn" aria-label="Switch to English" title="English">
                     <svg class="lang-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -138,6 +140,7 @@
             </div>
 
             <div class="nav-links" id="navLinks">
+                <a href="pro.html" class="nav-link nav-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">النسخة المؤسسية (قريباً)</a>
                 <a href="#philosophy" class="nav-link">الفلسفة الأمنية</a>
                 <a href="#pipeline" class="nav-link">البنية الهندسية</a>
                 <a href="#benchmarks" class="nav-link">الأداء والأرقام</a>
@@ -161,36 +164,56 @@
         <!-- Hero Section -->
         <article class="hero-section">
             <div class="eyebrow">
-                فاحص أسرار Git وكشف تسريب المفاتيح
+                مطور بلغة Go &bull; صفر اعتماديات خارجية &bull; أقل من 20 مللي ثانية
             </div>
-            <h1 class="hero-title">كرينوكس: أفضل فاحص أسرار وكشف تسريب المفاتيح وكلمات المرور في Git</h1>
-            <p class="text-lead">كرينوكس (Crenox) هو أقوى وأسرع <strong>فاحص أسرار (Secret Scanner)</strong> مكتوب بلغة Go وبدون أي اعتماديات خارجية. يفحص التعديلات المرحلية ويكتشف مفاتيح API المسربة وكلمات المرور والأسرار البرمجية في أقل من 20 مللي ثانية قبل رفعها إلى GitHub أو GitLab.</p>
+            <h1 class="hero-title">منع تسريب البيانات الحساسة قبل مغادرتها الجهاز.</h1>
+            <p class="text-lead">أداة مجمعة ثنائياً بلغة Go وبدون أي اعتماديات تشغيل خارجية، تفحص التعديلات المرحلية محلياً في ذاكرة محطة العمل لاعتراض تسريب المفاتيح وبيانات الاعتماد قبل إتمام الالتزام.</p>
             
-            <p class="text-muted" style="font-size: 0.85rem; margin-top: -1rem;">نُشر بواسطة <strong>crenoxhq</strong> في 3 يوليو 2026</p>
+            <p class="text-muted" style="font-size: 0.85rem; margin-top: -1rem;">نُشر بواسطة <strong>CrenoxHQ</strong> في 3 يوليو 2026</p>
 
             <div class="hero-actions">
-                <a href="#installation" class="btn btn-primary">تثبيت الأداة</a>
+                <a href="#installation" class="btn btn-primary">تثبيت الأداة مجاناً</a>
+                <a href="pro.html" class="btn btn-secondary btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">
+                    نسخة المؤسسات (قريباً)
+                </a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="btn btn-secondary">
                     مستودع الكود البرمجي
                     <span class="btn-icon">↗</span>
                 </a>
             </div>
-            
-            <div style="margin-top: 2rem; display: flex; align-items: center;">
-                <a href="https://www.producthunt.com/products/crenox-leak-secret-scanner?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-crenox-secret-scanner" target="_blank" rel="noopener noreferrer"><img alt="Crenox Secret Scanner - Context-aware Git secret scanner in Go | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1196224&amp;theme=neutral&amp;t=1784131078630" style="width: 250px; height: 54px; border-radius: 6px;"></a>
+
+
+            <!-- Video Demonstration -->
+            <div class="hero-video-frame">
+                <video class="hero-video-player" autoplay loop muted playsinline controls preload="metadata" poster="logo.png">
+                    <source src="crenox-demo.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
             </div>
 
-            <!-- بطاقة تعريفية بالنسخة المؤسسية Pro -->
-            <div class="pro-callout-card">
-                <div class="pro-callout-content" style="max-width: 100%;">
-                    <div class="pro-callout-badge">
-                        <span class="pro-badge-dot"></span>
-                        قيد التطوير حالياً &bull; إدارة أساطيل المطورين المؤسسية
+            <!-- مقارنة معمارية واضحة وفاصلة بين النسخة المفتوحة والنسخة المؤسسية -->
+            <div class="tier-bridge-card">
+                <div class="tier-bridge-side">
+                    <div>
+                        <div class="tier-bridge-tag">المحرك المفتوح المصدر</div>
+                        <h3 class="tier-bridge-heading">نسخة الأفراد (Crenox Community)</h3>
+                        <p class="tier-bridge-desc">
+                            فاحص خفيف لخطافات Git مخصص للمطورين الأفراد. يعترض تسريب الأسرار محلياً في ذاكرة محطة العمل قبل مغادرتها الجهاز. سريع وخاص ومجاني دائماً.
+                        </p>
                     </div>
-                    <h2 class="pro-callout-title">نسخة Crenox Pro المؤسسية &mdash; قيد التطوير</h2>
-                    <p class="pro-callout-desc">
-                        يعمل فريقنا حالياً على تطوير نسخة Crenox Pro: منصة مؤسسية ذاتية الاستضافة ومعزولة تماماً (Air-Gapped) لإدارة أساطيل المطورين ومزامنة السياسات المركزية وسجلات التدقيق الموحدة. سيتم الإعلان عن كافة التفاصيل فور اكتمال مرحلة التطوير.
-                    </p>
+                    <a href="#installation" class="tier-bridge-action">تثبيت واستخدام الأداة &darr;</a>
+                </div>
+                <div class="tier-bridge-side">
+                    <div>
+                        <div class="tier-bridge-tag pro">حوكمة وإدارة الأساطيل</div>
+                        <h3 class="tier-bridge-heading">نسخة المؤسسات (Crenox Pro)</h3>
+                        <p class="tier-bridge-desc">
+                            إدارة مركزية لسياسات الأمان، وسجلات تدقيق الامتثال الآلية، وحماية موحدة وشاملة لفرق التطوير.
+                        </p>
+                    </div>
+                    <a href="pro.html" class="tier-bridge-btn-pro tier-bridge-btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">
+                        نسخة المؤسسات (قريباً)
+                    </a>
                 </div>
             </div>
         </article>
@@ -526,6 +549,7 @@ allowlist_patterns:
                 </a>
             </div>
             <div class="footer-links">
+                <a href="pro.html" class="footer-link footer-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">النسخة المؤسسية (قريباً)</a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="footer-link">مستودع الكود البرمجي</a>
                 <a href="https://github.com/crenoxhq/crenox/blob/main/CHANGELOG.md" target="_blank" class="footer-link">سجل التغييرات</a>
             </div>
