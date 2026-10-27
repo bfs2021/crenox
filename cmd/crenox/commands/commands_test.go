@@ -400,10 +400,10 @@ func TestUpdateCmd_Hex64Regex(t *testing.T) {
 	}
 
 	invalidHashes := []string{
-		"",         // empty
-		"e3b0c442", // too short
+		"",                                                                    // empty
+		"e3b0c442",                                                            // too short
 		"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855aa", // too long (66 chars)
-		"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85g",   // non-hex char 'g'
+		"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85g", // non-hex char 'g'
 		"not-a-hash",
 	}
 	for _, h := range invalidHashes {
@@ -971,3 +971,5 @@ func TestRunCmd_FailClosedOnDiffOrShowFailure(t *testing.T) {
 		t.Errorf("expected failed_files to be present in scan_error, got: %v", rep["failed_files"])
 	}
 }
+
+

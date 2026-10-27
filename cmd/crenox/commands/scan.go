@@ -197,6 +197,9 @@ func runAdHocScan(paths []string, configPath, format string, recursive, verbose,
 		type historyJob struct {
 			displayPath string
 			content     []byte
+			// lineNums maps each line of content to its absolute line number
+			// in the new file; it stays nil for commit-message chunks.
+			lineNums []int
 		}
 
 		var wg sync.WaitGroup
@@ -225,6 +228,13 @@ func runAdHocScan(paths []string, configPath, format string, recursive, verbose,
 					}
 
 					findings := sec.ScanContent(job.displayPath, job.content)
+					if len(job.lineNums) > 0 {
+						for i, f := range findings {
+							if f.Line >= 1 && f.Line-1 < len(job.lineNums) {
+								findings[i].Line = job.lineNums[f.Line-1]
+							}
+						}
+					}
 					if len(findings) > 0 {
 						mu.Lock()
 						for _, f := range findings {
@@ -252,12 +262,12 @@ func runAdHocScan(paths []string, configPath, format string, recursive, verbose,
 		// report absolute file lines instead of hunk-relative ones.
 		var inHunk bool
 		var hunkNewLine int
-		var chunkLines int
+		var chunkLineNums []int
 
 		processFileChunk := func() {
 			defer func() {
 				currentChunk = currentChunk[:0]
-				chunkLines = 0
+				chunkLineNums = chunkLineNums[:0]
 			}()
 			if chunkTooLarge {
 				currentChunk = currentChunk[:0]
@@ -297,7 +307,9 @@ func runAdHocScan(paths []string, configPath, format string, recursive, verbose,
 
 			contentCopy := make([]byte, len(currentChunk))
 			copy(contentCopy, currentChunk)
-			jobs <- historyJob{displayPath: displayPath, content: contentCopy}
+			numsCopy := make([]int, len(chunkLineNums))
+			copy(numsCopy, chunkLineNums)
+			jobs <- historyJob{displayPath: displayPath, content: contentCopy, lineNums: numsCopy}
 			currentChunk = currentChunk[:0]
 		}
 
@@ -399,26 +411,14 @@ func runAdHocScan(paths []string, configPath, format string, recursive, verbose,
 
 			if inHunk && len(line) > 0 && line[0] == '+' && !bytes.HasPrefix(line, []byte("+++")) {
 				if !chunkTooLarge {
-					if pad := hunkNewLine - 1 - chunkLines; pad > 0 {
-						if int64(len(currentChunk)+pad) > cfg.MaxFileSizeBytes {
-							chunkTooLarge = true
-							currentChunk = nil
-							chunkLines = 0
-						} else {
-							currentChunk = append(currentChunk, bytes.Repeat([]byte{'\n'}, pad)...)
-							chunkLines += pad
-						}
-					}
-				}
-				if !chunkTooLarge {
 					if int64(len(currentChunk)+len(line)-1) > cfg.MaxFileSizeBytes {
 						chunkTooLarge = true
 						currentChunk = nil
-						chunkLines = 0
+						chunkLineNums = chunkLineNums[:0]
 					} else {
 						currentChunk = append(currentChunk, line[1:]...)
 						currentChunk = append(currentChunk, '\n')
-						chunkLines++
+						chunkLineNums = append(chunkLineNums, hunkNewLine)
 					}
 				}
 				hunkNewLine++
