@@ -7,7 +7,7 @@
     
     <!-- Meta Descriptions for SEO -->
     <meta name="description" content="أداة كرينوكس (Crenox) لفحص أسرار Git محلياً بلغة Go بدون اعتماديات. فحص التعديلات في ذاكرة محطة العمل لمنع تسريب المفاتيح وبيانات الاعتماد قبل إتمام الالتزام.">
-    <meta name="keywords" content="كرينوكس, كرينوكس برو, Crenox, Crenox Pro, فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فاحص مفاتيح API, بديل gitleaks, بديل trufflehog, بديل gitguardian, بديل detect-secrets, فحص git secrets, كشف كلمات المرور, حماية الشيفرة البرمجية, pre-commit hook, devsecops">
+    <meta name="keywords" content="كرينوكس, Crenox, Crenox Pro, فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فاحص مفاتيح API, بديل gitleaks, فحص git secrets, كشف كلمات المرور, حماية الشيفرة البرمجية, pre-commit hook">
     <meta name="author" content="CrenoxHQ">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="google-site-verification" content="googledc7329401f946fab">
@@ -98,14 +98,6 @@
             "@type": "Answer",
             "text": "نعم، يدعم كرينوكس تصدير تقارير GitLab Secret Detection SAST v15.0.0 الرسمية عبر صيغة (-f gitlab-sast) وتقارير GitHub Security SARIF 2.1.0 عبر صيغة (-f sarif) بالإضافة إلى JSON و Plain."
           }
-        },
-        {
-          "@type": "Question",
-          "name": "ما الفرق بين كرينوكس وأدوات TruffleHog و detect-secrets و GitGuardian؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "خلافاً للأدوات التي تتطلب مفسرات خارجية مثل Python (detect-secrets) أو منصات السحابة الخارجية (GitGuardian)، يعمل كرينوكس كملف ثنائي مستقل بلغة Go يفحص التعديلات محلياً في الذاكرة قبل إتمام الالتزام، وتوفر نسخة Crenox Pro إدارة مركزية للسياسات وسجلات تدقيق داخل الشبكة الخاصة للمؤسسة."
-          }
         }
       ]
     }
@@ -132,7 +124,7 @@
             </a>
             
             <div class="nav-controls">
-                <a href="pro.html" class="nav-enterprise-link" title="طلب مسبق لنسخة Pro">نسخة Pro (طلب مسبق)</a>
+                <a href="pro.html" class="nav-enterprise-link nav-enterprise-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">نسخة Pro (قريباً)</a>
                 <a href="index.html" class="lang-switch-btn" aria-label="Switch to English" title="English">
                     <svg class="lang-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -148,7 +140,7 @@
             </div>
 
             <div class="nav-links" id="navLinks">
-                <a href="pro.html" class="nav-link" title="النسخة المؤسسية - طلب مسبق">نسخة Pro (طلب مسبق)</a>
+                <a href="pro.html" class="nav-link nav-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">النسخة المؤسسية (قريباً)</a>
                 <a href="#philosophy" class="nav-link">الفلسفة الأمنية</a>
                 <a href="#pipeline" class="nav-link">البنية الهندسية</a>
                 <a href="#benchmarks" class="nav-link">الأداء والأرقام</a>
@@ -158,8 +150,8 @@
                 <a href="#community" class="nav-link">الدعم والمجتمع</a>
                 <a href="wild-ar.html" class="nav-link" style="font-weight: bold; color: var(--color-text-primary);">في الميدان</a>
                 <div class="nav-menu-badge">
-                    <a href="https://github.com/crenoxhq/crenox" target="_blank" rel="noopener noreferrer" title="Secured by Crenox Pro">
-                        <img src="https://img.shields.io/badge/Secured%20by-Crenox%20Pro-E2E8F0?style=for-the-badge&logo=shield&logoColor=0F172A&labelColor=0F172A" alt="Secured by Crenox Pro">
+                    <a href="https://github.com/crenoxhq/crenox" target="_blank" rel="noopener noreferrer" title="Secured by Crenox">
+                        <img src="https://img.shields.io/badge/Secured%20by-Crenox-E2E8F0?style=for-the-badge&logo=shield&logoColor=0F172A&labelColor=0F172A" alt="Secured by Crenox">
                     </a>
                 </div>
             </div>
@@ -181,8 +173,8 @@
 
             <div class="hero-actions">
                 <a href="#installation" class="btn btn-primary">تثبيت الأداة مجاناً</a>
-                <a href="pro.html" class="btn btn-secondary">
-                    نسخة المؤسسات (طلب مسبق) &larr;
+                <a href="pro.html" class="btn btn-secondary btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">
+                    نسخة المؤسسات (قريباً)
                 </a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="btn btn-secondary">
                     مستودع الكود البرمجي
@@ -219,8 +211,8 @@
                             إدارة مركزية لسياسات الأمان، وسجلات تدقيق الامتثال الآلية، وحماية موحدة وشاملة لفرق التطوير.
                         </p>
                     </div>
-                    <a href="pro.html" class="tier-bridge-btn-pro" title="نسخة المؤسسات - طلب مسبق">
-                        نسخة المؤسسات (طلب مسبق) &larr;
+                    <a href="pro.html" class="tier-bridge-btn-pro tier-bridge-btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">
+                        نسخة المؤسسات (قريباً)
                     </a>
                 </div>
             </div>
@@ -343,7 +335,7 @@
             <p>تنزيل البرنامج الجاهز مباشرة بدون أي متطلبات سابقة. مثال لنظام Linux AMD64:</p>
             <pre class="font-mono">
 # 1. تنزيل الملف الثنائي المناسب لمعمارية جهازك (مثال لـ Linux AMD64)
-wget https://github.com/crenoxhq/crenox/releases/download/<span class="latest-version">v2.1.10</span>/crenox-<span class="latest-version">v2.1.10</span>-linux-amd64 -O crenox
+wget https://github.com/crenoxhq/crenox/releases/download/<span class="latest-version">v2.1.5</span>/crenox-<span class="latest-version">v2.1.5</span>-linux-amd64 -O crenox
 
 # 2. منح صلاحيات التشغيل للملف
 chmod +x crenox
@@ -364,7 +356,7 @@ pkg install crenox</pre>
             <p>إذا كان لديك بيئة Go مهيأة في مسار نظامك، يمكنك تنزيل وبناء الأداة مباشرة بالأمر التالي:</p>
             <pre class="font-mono">go install github.com/crenoxhq/crenox/v2/cmd/crenox@latest</pre>
 
-            <h3>الخيار هـ: التجميع والبناء من المصدر</h3>
+            <h3>الخيار د: التجميع والبناء من المصدر</h3>
             <p>استنساخ المستودع وبناء الملف الثنائي يدوياً باستخدام أوامر Makefile المرفقة:</p>
             <pre class="font-mono">
 git clone https://github.com/crenoxhq/crenox.git
@@ -557,7 +549,7 @@ allowlist_patterns:
                 </a>
             </div>
             <div class="footer-links">
-                <a href="pro.html" class="footer-link">النسخة المؤسسية - طلب مسبق (Pro)</a>
+                <a href="pro.html" class="footer-link footer-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="قريباً">النسخة المؤسسية (قريباً)</a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="footer-link">مستودع الكود البرمجي</a>
                 <a href="https://github.com/crenoxhq/crenox/blob/main/CHANGELOG.md" target="_blank" class="footer-link">سجل التغييرات</a>
             </div>

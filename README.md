@@ -1,6 +1,6 @@
 # Crenox — Statically Compiled Git Secret Scanner & Pre-Commit Hook
 
-<!-- SEO: git secret scanner, pre-commit hook, gitleaks alternative, trufflehog alternative, gitguardian alternative, detect-secrets alternative, git-secrets alternative, betterleaks alternative, talisman git hook, credentials detector, api key detection, go security tool, devsecops, gitlab secret detection sast, sarif, on-premises secret scanner, air-gapped secret detection, فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فحص مفاتيح API, بديل gitleaks, بديل trufflehog, بديل gitguardian -->
+<!-- SEO: git secret scanner, pre-commit hook, gitleaks alternative, credentials detector, api key detection, go security tool, git-secrets alternative, devsecops, gitlab secret detection sast, sarif, فاحص أسرار, فحص الأسرار البرمجية, كشف تسريب المفاتيح, فحص مفاتيح API, بديل gitleaks -->
 
 <div align="center">
 
@@ -46,7 +46,7 @@
 
 **Crenox** is a statically compiled, zero-dependency Git pre-commit hook and credentials scanner written in Go. It automatically blocks commits of API keys, SSH private keys, cloud credentials, database connection strings, and other sensitive material before they are recorded in version control history.
 
-It is an alternative to tools like **Gitleaks**, **TruffleHog**, and **git-secrets**, focusing on lower resource utilization and local workflow integration.
+It is an alternative to tools like **Gitleaks** and **git-secrets**, focusing on lower resource utilization and local workflow integration.
 
 Crenox uses a **three-tier detection pipeline** designed for speed and false positive reduction:
 
@@ -88,16 +88,6 @@ That is all. No configuration file required. No runtime dependencies. Works on L
 
 ---
 
-## Crenox Pro
-
-For engineering teams and organizations, **Crenox Pro** provides centralized policy management, audit logging, and fleet-wide pre-commit enforcement within private infrastructure.
-
-https://crenoxhq.github.io/crenox/crenox-demo.mp4
-
-> **[Enterprise Specification & Pre-Order →](https://crenoxhq.github.io/crenox/pro.html)** &bull; **[Watch Demonstration (MP4)](https://crenoxhq.github.io/crenox/crenox-demo.mp4)**
-
----
-
 ## Terminal Demo
 
 ```bash
@@ -112,7 +102,6 @@ asciinema play https://crenoxhq.github.io/crenox/demo.cast
 
 - [What is Crenox](#what-is-crenox)
 - [Quick Start](#quick-start)
-- [Crenox Pro](#crenox-pro)
 - [Performance](#performance)
 - [Why Crenox](#why-crenox)
 - [Architecture](#architecture)
@@ -126,6 +115,7 @@ asciinema play https://crenoxhq.github.io/crenox/demo.cast
 - [In the Wild (Live Archive)](https://crenoxhq.github.io/crenox/wild.html)
 - [Running Tests](#running-tests)
 - [Contributing](#contributing)
+- [Enterprise Edition (Crenox Pro)](#enterprise-edition-crenox-pro)
 - [License](#license)
 
 ---
@@ -186,23 +176,23 @@ Measured on real-world repositories with Crenox against the most popular alterna
 
 ---
 
-## Why Crenox — Comparison (vs Gitleaks, TruffleHog, detect-secrets, Betterleaks)
+## Why Crenox — Comparison (vs Gitleaks, Betterleaks)
 
-| Feature | Crenox | Gitleaks | TruffleHog | detect-secrets | Betterleaks |
-|---------|:--------:|:-----------:|:----------:|:--------------:|:--------------:|
-| Statically compiled, zero runtime dependencies | + | + | + | — (Python) | + |
-| ARM / Android / Termux native support | + | partial | partial | partial | partial |
-| Aho-Corasick O(n) multi-pattern matching | + | + | + | — | + |
-| Shannon entropy analysis | + | + | + | + | — |
-| Token efficiency (BPE tokenizer) | — | — | — | — | + |
-| Context-aware false-positive suppression | + | — | — | partial | — |
-| BIP-39 seed phrase detection | + | — | — | — | — |
-| Single-layer Base64 decoding | + | + | + | — | + |
-| Concurrent file scanning | + | + | + | + | + |
-| SARIF & GitLab SAST output formatting | + | + | — | — | + |
-| Global hook installation | + | + | — | — | — |
-| Custom user-defined signatures | + | + | + | + | + |
-| OTA self-updating binary | + | — | + | — | — |
+| Feature | Crenox | Gitleaks | Betterleaks |
+|---------|:--------:|:-----------:|:--------------:|
+| Statically compiled, zero runtime dependencies | + | + | + |
+| ARM / Android / Termux native support | + | partial | partial |
+| Aho-Corasick O(n) multi-pattern matching | + | + | + |
+| Shannon entropy analysis | + | + | — |
+| Token efficiency (BPE tokenizer) | — | — | + |
+| Context-aware false-positive suppression | + | — | — |
+| BIP-39 seed phrase detection | + | — | — |
+| Single-layer Base64 decoding | + | + | + |
+| Concurrent file scanning | + | + | + |
+| SARIF & JSON output formatting | + | + | + |
+| Global hook installation | + | + | — |
+| Custom user-defined signatures | + | + | + |
+| OTA self-updating binary | + | — | — |
 
 ---
 
@@ -825,7 +815,16 @@ A background check runs on each invocation, querying the API at most once per 24
 
 ---
 
-## Output Reference
+## Output Reference & Exit Codes
+
+### Exit Codes
+
+| Exit Code | Classification | Condition |
+|:---:|:---|:---|
+| `0` | **Clean** | All eligible files scanned successfully with zero findings. |
+| `1` | **Blocked** (`blocked`) | One or more findings (`CRITICAL`, `HIGH`, `MEDIUM`, or `LOW`) detected. |
+| `1` | **Scan Error** (`scan_error`) | Unreadable file, permission denial, or broken Git command pipe. |
+| `2` | **Invocation Error** | Invalid flags, unexpected positional arguments, or malformed config. |
 
 ### Output Examples
 
@@ -985,6 +984,22 @@ Contributions are welcome. All contributors must agree to the **[Contributor Lic
 ## Maintainer
 
 Maintained by **CrenoxHQ** — [https://github.com/crenoxhq](https://github.com/crenoxhq)
+
+---
+
+## Enterprise Edition (Crenox Pro)
+
+Crenox Pro provides centralized policy enforcement, cryptographic audit ledgers, and fleet-wide pre-commit secret interception across developer workstations and engineering teams.
+
+### Teaser Demonstration
+
+Watch how Crenox intercepts sensitive credentials in workstation memory before commits leave local developer machines:
+
+https://crenoxhq.github.io/crenox/crenox-demo.mp4
+
+> **[Watch Teaser Video (MP4)](https://crenoxhq.github.io/crenox/crenox-demo.mp4)** &bull; **[Interactive Documentation & Showcase](https://crenoxhq.github.io/crenox/)**
+
+*Crenox Pro is currently in private technical preview. Enterprise fleet specifications and licensing will be published upon formal rollout.*
 
 ---
 

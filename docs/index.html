@@ -7,7 +7,7 @@
     
     <!-- Meta Descriptions for SEO -->
     <meta name="description" content="Crenox is an ultra-fast, zero-dependency Git pre-commit secret detector written in Go. Inspect staged buffers locally to block credential leaks before commit finalization.">
-    <meta name="keywords" content="Crenox, Crenox Pro, secret scanner, git secret scanner, pre-commit secret scanner, gitleaks alternative, trufflehog alternative, gitguardian alternative, detect-secrets alternative, git-secrets alternative, betterleaks alternative, in-memory secret detection, go secret scanner, devsecops secret scanner, gitlab secret detection sast, sarif secret scanner">
+    <meta name="keywords" content="Crenox, Crenox Pro, secret scanner, git secret scanner, secret detection tool, pre-commit hook, in-memory secret detection, go secret scanner, devsecops secret scanner, gitlab secret detection sast, sarif secret scanner">
     <meta name="author" content="CrenoxHQ">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="google-site-verification" content="googledc7329401f946fab">
@@ -99,14 +99,6 @@
             "@type": "Answer",
             "text": "Yes, Crenox natively generates GitLab Secret Detection SAST reports (-f gitlab-sast) for GitLab Security Dashboards, and OASIS SARIF 2.1.0 (-f sarif) for GitHub Security Code Scanning."
           }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Crenox differ from TruffleHog, detect-secrets, git-secrets, and GitGuardian?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Unlike Python or Perl tools (detect-secrets, git-secrets) or cloud SaaS scanners (GitGuardian), Crenox compiles to a single dependency-free Go binary that intercepts secrets in workstation memory prior to commit creation. For engineering organizations, Crenox Pro adds on-premises fleet governance, centralized policy synchronization, and audit logging."
-          }
         }
       ]
     }
@@ -133,7 +125,7 @@
             </a>
             
             <div class="nav-controls">
-                <a href="pro.html" class="nav-enterprise-link" title="Crenox Pro Pre-Order">Crenox Pro (Pre-Order)</a>
+                <a href="pro.html" class="nav-enterprise-link nav-enterprise-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Crenox Pro (Soon)</a>
                 <a href="index-ar.html" class="lang-switch-btn" aria-label="Switch to Arabic" title="العربية">
                     <svg class="lang-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -149,7 +141,7 @@
             </div>
 
             <div class="nav-links" id="navLinks">
-                <a href="pro.html" class="nav-link" title="Enterprise Pro Pre-Order">Enterprise Pro (Pre-Order)</a>
+                <a href="pro.html" class="nav-link nav-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Enterprise Pro (Soon)</a>
                 <a href="#philosophy" class="nav-link">Philosophy</a>
                 <a href="#pipeline" class="nav-link">Pipeline</a>
                 <a href="#benchmarks" class="nav-link">Performance</a>
@@ -159,8 +151,8 @@
                 <a href="#community" class="nav-link">Community</a>
                 <a href="wild.html" class="nav-link" style="font-weight: bold; color: var(--color-text-primary);">In the Wild</a>
                 <div class="nav-menu-badge">
-                    <a href="https://github.com/crenoxhq/crenox" target="_blank" rel="noopener noreferrer" title="Secured by Crenox Pro">
-                        <img src="https://img.shields.io/badge/Secured%20by-Crenox%20Pro-E2E8F0?style=for-the-badge&logo=shield&logoColor=0F172A&labelColor=0F172A" alt="Secured by Crenox Pro">
+                    <a href="https://github.com/crenoxhq/crenox" target="_blank" rel="noopener noreferrer" title="Secured by Crenox">
+                        <img src="https://img.shields.io/badge/Secured%20by-Crenox-E2E8F0?style=for-the-badge&logo=shield&logoColor=0F172A&labelColor=0F172A" alt="Secured by Crenox">
                     </a>
                 </div>
             </div>
@@ -182,8 +174,8 @@
 
             <div class="hero-actions">
                 <a href="#installation" class="btn btn-primary">Deploy Crenox Free</a>
-                <a href="pro.html" class="btn btn-secondary">
-                    Crenox Pro (Pre-Order) &rarr;
+                <a href="pro.html" class="btn btn-secondary btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">
+                    Crenox Pro (Coming Soon)
                 </a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="btn btn-secondary">
                     GitHub Codebase
@@ -220,8 +212,8 @@
                             Centralized policy management, automated compliance audit trails, and fleet-wide enforcement for engineering teams.
                         </p>
                     </div>
-                    <a href="pro.html" class="tier-bridge-btn-pro" title="Crenox Pro Pre-Order">
-                        Enterprise Fleet (Pre-Order) &rarr;
+                    <a href="pro.html" class="tier-bridge-btn-pro tier-bridge-btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">
+                        Enterprise Fleet (Coming Soon)
                     </a>
                 </div>
             </div>
@@ -344,7 +336,7 @@
             <p>Download pre-built binaries directly without dependencies. Example for Linux AMD64:</p>
             <pre class="font-mono">
 # 1. Download the target binary (example for Linux AMD64)
-wget https://github.com/crenoxhq/crenox/releases/download/<span class="latest-version">v2.1.10</span>/crenox-<span class="latest-version">v2.1.10</span>-linux-amd64 -O crenox
+wget https://github.com/crenoxhq/crenox/releases/download/<span class="latest-version">v2.1.5</span>/crenox-<span class="latest-version">v2.1.5</span>-linux-amd64 -O crenox
 
 # 2. Add execution permissions
 chmod +x crenox
@@ -365,7 +357,7 @@ pkg install crenox</pre>
             <p>If you have Go installed on your path, fetch and compile the latest release directly:</p>
             <pre class="font-mono">go install github.com/crenoxhq/crenox/v2/cmd/crenox@latest</pre>
 
-            <h3>Option E: Compile from source</h3>
+            <h3>Option D: Compile from source</h3>
             <p>Clone the repository and build manually using our Makefile configurations:</p>
             <pre class="font-mono">
 git clone https://github.com/crenoxhq/crenox.git
@@ -558,7 +550,7 @@ allowlist_patterns:
                 </a>
             </div>
             <div class="footer-links">
-                <a href="pro.html" class="footer-link">Enterprise Pro (Pre-Order)</a>
+                <a href="pro.html" class="footer-link footer-link-disabled" aria-disabled="true" tabindex="-1" onclick="return false;" title="Coming soon">Enterprise Pro (Soon)</a>
                 <a href="https://github.com/crenoxhq/crenox" target="_blank" class="footer-link">GitHub Repository</a>
                 <a href="https://github.com/crenoxhq/crenox/blob/main/CHANGELOG.md" target="_blank" class="footer-link">Changelog</a>
             </div>

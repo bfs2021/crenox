@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://crenoxhq.github.io/crenox/sitemap.xml
-Sitemap: https://crenoxhq.github.io/crenox/sitemap-main.xml
